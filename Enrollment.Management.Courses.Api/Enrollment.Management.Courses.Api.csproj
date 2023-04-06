@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Enrollment.Management.Courses.Domain\Enrollment.Management.Courses.Domain.csproj" />
+    <ProjectReference Include="..\Enrollment.Management.Courses.Infrastructure\Enrollment.Management.Courses.Infrastructure.csproj" />
+  </ItemGroup>
 
 
 </Project>
