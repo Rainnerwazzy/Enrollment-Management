@@ -1,3 +1,4 @@
+using Enrollment.Management.Students.Api.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,10 +23,13 @@ namespace Enrollment.Management.Students.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers();            
+            services.AddSwaggerGen();
+            services.AddSwaggerGenNewtonsoftSupport();
+            services.AddInfrastructureApi(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,8 +38,11 @@ namespace Enrollment.Management.Students.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
+    
             app.UseHttpsRedirection();
 
             app.UseRouting();

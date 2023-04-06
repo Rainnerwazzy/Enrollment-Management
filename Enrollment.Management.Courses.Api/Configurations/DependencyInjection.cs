@@ -1,9 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Enrollment.Management.Courses.Domain.Interfaces;
+using Enrollment.Management.Courses.Domain.Mappings;
+using Enrollment.Management.Courses.Domain.Services;
+using Enrollment.Management.Courses.Infrastructure.Context;
+using Enrollment.Management.Courses.Infrastructure.Interfaces;
+using Enrollment.Management.Courses.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Enrollment.Management.Courses.Api.Configurations
 {
@@ -13,11 +16,11 @@ namespace Enrollment.Management.Courses.Api.Configurations
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-            //services.AddScoped<IProductRepository, ProductRepository>();
-            //services.AddScoped<IProductService, ProductService>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<ICoursesRepository, CoursesRepository>();
+            services.AddScoped<ICoursesService, CoursesService>();
 
-            //services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
+            services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
         }
     }
 }
