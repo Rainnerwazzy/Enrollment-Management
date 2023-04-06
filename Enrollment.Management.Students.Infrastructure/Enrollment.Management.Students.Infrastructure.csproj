@@ -4,4 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DbContext\Entities\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
