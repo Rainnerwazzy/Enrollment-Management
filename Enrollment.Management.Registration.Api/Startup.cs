@@ -1,4 +1,5 @@
 using Enrollment.Management.Registration.Api.Configurations;
+using Enrollment.Management.Registration.Domain.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +30,12 @@ namespace Enrollment.Management.Registration.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);;
-            services.AddSwaggerGen();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Enrollment.Management.Registration.Api", Version = "v1" });
+                c.SchemaFilter<SwaggerExcludeFilter>();
+            });
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddInfrastructureApi(Configuration);
         }
