@@ -11,10 +11,7 @@
 	</ItemGroup>
 	
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Enrollment.Management.Registration.Infrastructure\Enrollment.Management.Registration.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -82,11 +82,11 @@ namespace Enrollment.Management.Registration.Infrastructure.Context
 
             modelBuilder.Entity<Matriculas>(entity =>
             {
-                entity.HasKey(e => e.MatriculaId);
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("MATRICULAS");
 
-                entity.Property(e => e.MatriculaId).HasColumnName("MATRICULA_ID");
+                entity.Property(e => e.Id).HasColumnName("MATRICULA_ID");
 
                 entity.Property(e => e.AlunoId).HasColumnName("ALUNO_ID");
 

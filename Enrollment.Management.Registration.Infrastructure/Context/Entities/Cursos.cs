@@ -16,7 +16,7 @@ namespace Enrollment.Management.Registration.Infrastructure.Context.Entities
         public int CursoId { get; set; }
 
         public string NomeCurso { get; set; }
-        public TimeSpan? Duracao { get; set; }
+        public int? Duracao { get; set; }
         public DateTime? DataLimiteMatricula { get; set; }
         public decimal? Custo { get; set; }
         public string Disciplina { get; set; }

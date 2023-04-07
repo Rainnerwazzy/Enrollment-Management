@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Enrollment.Management.Registration.Infrastructure.Context.Entities
 {
-    public partial class Matriculas
+    public partial class Matriculas: BaseEntity
     {
-        public int MatriculaId { get; set; }
         public DateTime? DataMatricula { get; set; }
         public int AlunoId { get; set; }
         public int CursoId { get; set; }
