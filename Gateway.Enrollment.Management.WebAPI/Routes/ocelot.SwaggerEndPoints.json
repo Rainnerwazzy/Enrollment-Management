@@ -7,7 +7,7 @@
     //    {
     //      "Name": "Gateway.WebAPI",
     //      "Version": "1.0",
-    //      "Url": "http://localhost:5205/swagger/v1/swagger.json"
+    //      "Url": "{Scheme}://localhost:{ServicePort}/swagger/v1/swagger.json"
     //    }
     //  ]
     //},
@@ -18,7 +18,7 @@
         {
           "Name": "Courses.API",
           "Version": "1.0",
-          "Url": "http://localhost:5205/courses/swagger/v1/swagger.json"
+          "Url": "{Scheme}://localhost:{ServicePort}/courses/swagger/v1/swagger.json"
         }
       ]
     },
@@ -29,7 +29,7 @@
         {
           "Name": "Student.API",
           "Version": "1.0",
-          "Url": "http://localhost:5205/students/swagger/v1/swagger.json"
+          "Url": "{Scheme}://localhost:{ServicePort}/students/swagger/v1/swagger.json"
         }
       ]
     },
@@ -40,7 +40,7 @@
         {
           "Name": "Registration.API",
           "Version": "1.0",
-          "Url": "http://localhost:5205/registrations/swagger/v1/swagger.json"
+          "Url": "{Scheme}://localhost:{ServicePort}/registrations/swagger/v1/swagger.json"
         }
       ]
     }

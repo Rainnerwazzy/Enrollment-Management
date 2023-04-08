@@ -3,12 +3,12 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "SwaggerKey": "courses",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5001"
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/courses/{everything}",
@@ -19,8 +19,13 @@
         "DELETE"
       ]
     }
-  ]
-
+  ],
+  "DownstreamPathTemplate": "/",
+  "DownstreamScheme": "http",
+  "DownstreamPort": 80,
+  "DownstreamHost": "pedido",
+  "UpstreamPathTemplate": "/pedido/",
+  "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
   //"Routes": [
   //  {
   //    "DownstreamPathTemplate": "/api/v1/courses/get-all-courses",

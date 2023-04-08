@@ -1,33 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33328.57
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Enrollment.Management.WebAPI", "Gateway.Enrollment.Management.WebAPI\Gateway.Enrollment.Management.WebAPI.csproj", "{C6496C0D-A1F3-4A0B-9580-D4CA105CB694}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroserviceStudents", "MicroserviceStudents", "{E2014297-687F-452C-BBE2-E531D438BBFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Students.Domain", "Enrollment.Management.Students.Domain\Enrollment.Management.Students.Domain.csproj", "{6C1EB649-A69E-4682-B1A0-E2FD57918033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Students.Domain", "Enrollment.Management.Students.Domain\Enrollment.Management.Students.Domain.csproj", "{6C1EB649-A69E-4682-B1A0-E2FD57918033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Students.Infrastructure", "Enrollment.Management.Students.Infrastructure\Enrollment.Management.Students.Infrastructure.csproj", "{8752E3F0-4478-4C3D-8300-47D9E7B23937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Students.Infrastructure", "Enrollment.Management.Students.Infrastructure\Enrollment.Management.Students.Infrastructure.csproj", "{8752E3F0-4478-4C3D-8300-47D9E7B23937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Students.Api", "Enrollment.Management.Students.Api\Enrollment.Management.Students.Api.csproj", "{18351F65-63A1-40BD-A04D-3D0939CCBDD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Students.Api", "Enrollment.Management.Students.Api\Enrollment.Management.Students.Api.csproj", "{18351F65-63A1-40BD-A04D-3D0939CCBDD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroserviceCourses", "MicroserviceCourses", "{5EF7AE4E-3B1C-4976-909D-D105471C0803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Courses.Api", "Enrollment.Management.Courses.Api\Enrollment.Management.Courses.Api.csproj", "{3CB94074-7416-49B5-98A9-F6BBA6BD488F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Courses.Api", "Enrollment.Management.Courses.Api\Enrollment.Management.Courses.Api.csproj", "{3CB94074-7416-49B5-98A9-F6BBA6BD488F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Courses.Domain", "Enrollment.Management.Courses.Domain\Enrollment.Management.Courses.Domain.csproj", "{7911269F-4AFC-48C6-8896-7135CE30CF6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Courses.Domain", "Enrollment.Management.Courses.Domain\Enrollment.Management.Courses.Domain.csproj", "{7911269F-4AFC-48C6-8896-7135CE30CF6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Courses.Infrastructure", "Enrollment.Management.Courses.Infrastructure\Enrollment.Management.Courses.Infrastructure.csproj", "{50C0B688-8907-445F-A986-663D9F1B18E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Courses.Infrastructure", "Enrollment.Management.Courses.Infrastructure\Enrollment.Management.Courses.Infrastructure.csproj", "{50C0B688-8907-445F-A986-663D9F1B18E9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroserviceRegistration", "MicroserviceRegistration", "{21456392-D802-4FCD-99E5-99E30B49C68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Registration.Domain", "Enrollment.Management.Registration.Domain\Enrollment.Management.Registration.Domain.csproj", "{45E05520-0AC2-4D67-BF96-8DE18A08749B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Registration.Domain", "Enrollment.Management.Registration.Domain\Enrollment.Management.Registration.Domain.csproj", "{45E05520-0AC2-4D67-BF96-8DE18A08749B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Registration.Infrastructure", "Enrollment.Management.Registration.Infrastructure\Enrollment.Management.Registration.Infrastructure.csproj", "{DF6CDFF5-82F1-405F-A6AE-C9D16354DECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Registration.Infrastructure", "Enrollment.Management.Registration.Infrastructure\Enrollment.Management.Registration.Infrastructure.csproj", "{DF6CDFF5-82F1-405F-A6AE-C9D16354DECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enrollment.Management.Registration.Api", "Enrollment.Management.Registration.Api\Enrollment.Management.Registration.Api.csproj", "{23A80128-E61D-49A1-B808-C915D72E2233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enrollment.Management.Registration.Api", "Enrollment.Management.Registration.Api\Enrollment.Management.Registration.Api.csproj", "{23A80128-E61D-49A1-B808-C915D72E2233}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3273C76F-9CC7-478E-8C65-7400855B1861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{23A80128-E61D-49A1-B808-C915D72E2233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A80128-E61D-49A1-B808-C915D72E2233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A80128-E61D-49A1-B808-C915D72E2233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3273C76F-9CC7-478E-8C65-7400855B1861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3273C76F-9CC7-478E-8C65-7400855B1861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3273C76F-9CC7-478E-8C65-7400855B1861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3273C76F-9CC7-478E-8C65-7400855B1861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
