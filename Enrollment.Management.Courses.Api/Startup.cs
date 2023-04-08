@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Enrollment.Management.Courses.Api
 {
@@ -20,7 +21,10 @@ namespace Enrollment.Management.Courses.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Courses.Api", Version = "v1" });
+            });
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddInfrastructureApi(Configuration);
         }

@@ -33,7 +33,7 @@ namespace Enrollment.Management.Registration.Api
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Enrollment.Management.Registration.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Registration.Api", Version = "v1" });
                 c.SchemaFilter<SwaggerExcludeFilter>();
             });
             services.AddSwaggerGenNewtonsoftSupport();
