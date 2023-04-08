@@ -23,7 +23,7 @@ namespace Enrollment.Management.Students.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllStudents")]
+        [HttpGet("get-all-students")]
         [ProducesResponseType(typeof(IEnumerable<AlunosDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -37,7 +37,7 @@ namespace Enrollment.Management.Students.Api.Controllers
             return NotFound("Students not found");
         }
 
-        [HttpGet("GetStudentById/{id:int}")]
+        [HttpGet("get-student-by-id/{id:int}")]
         [ProducesResponseType(typeof(AlunosDto), 200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<AlunosDto>> GetStudentById(int id)
@@ -50,7 +50,7 @@ namespace Enrollment.Management.Students.Api.Controllers
             return NotFound($"Student with {id} not found");
         }
 
-        [HttpPost("CreateStudent")]
+        [HttpPost("create-student")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<AlunosDto>> CreateStudents([FromBody] AlunosDto alunosDto)
@@ -66,7 +66,7 @@ namespace Enrollment.Management.Students.Api.Controllers
             return BadRequest("Error creating Student");
         }
 
-        [HttpPut("UpdateStudent")]
+        [HttpPut("update-student")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> UpdateStudents([FromBody] AlunosDto alunosDto)
@@ -82,7 +82,7 @@ namespace Enrollment.Management.Students.Api.Controllers
             return BadRequest("Error update Student");
         }
 
-        [HttpDelete("DeleteStudent/{id:int}")]
+        [HttpDelete("delete-student/{id:int}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<AlunosDto>> DeleteStudent(int id)

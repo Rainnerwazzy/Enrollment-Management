@@ -23,7 +23,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllCourses")]
+        [HttpGet("get-all-courses")]
         [ProducesResponseType(typeof(IEnumerable<CursosDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -37,7 +37,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
             return NotFound("Courses not found");
         }
 
-        [HttpGet("GetCourseById/{id:int}")]
+        [HttpGet("get-course-by-id/{id:int}")]
         [ProducesResponseType(typeof(CursosDto), 200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<CursosDto>> GetCourseById(int id)
@@ -50,7 +50,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
             return NotFound($"Course with {id} not found");
         }
 
-        [HttpPost("CreateCourse")]
+        [HttpPost("create-course")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<CursosDto>> CreateCourse([FromBody] CursosDto cursosDto)
@@ -66,7 +66,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
             return BadRequest("Course creating Student");
         }
 
-        [HttpPut("UpdateCourse")]
+        [HttpPut("update-course")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> UpdateCourse([FromBody] CursosDto cursosDto)
@@ -82,7 +82,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
             return BadRequest("Error update Course");
         }
 
-        [HttpDelete("DeleteCourse/{id:int}")]
+        [HttpDelete("delete-course/{id:int}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<CursosDto>> DeleteCourse(int id)

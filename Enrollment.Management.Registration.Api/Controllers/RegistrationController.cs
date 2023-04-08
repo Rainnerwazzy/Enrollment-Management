@@ -22,7 +22,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllRegistrations")]
+        [HttpGet("get-all-registrations")]
         [ProducesResponseType(typeof(IEnumerable<MatriculasDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -36,7 +36,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
             return NotFound("Registrations not found");
         }
 
-        [HttpGet("GetRegistrationById/{id:int}")]
+        [HttpGet("get-registration-by-id/{id:int}")]
         [ProducesResponseType(typeof(MatriculasDto), 200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<MatriculasDto>> GetRegistrationById(int id)
@@ -49,7 +49,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
             return NotFound($"Registration with {id} not found");
         }
 
-        [HttpPost("CreateRegistration")]
+        [HttpPost("create-registration")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<MatriculasDto>> CreateRegistration([FromBody] MatriculasDto matriculasDto)
@@ -65,7 +65,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
             return BadRequest("Registration creating Student");
         }
 
-        [HttpPut("UpdateRegistration")]
+        [HttpPut("update-registration")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> UpdateRegistration([FromBody] MatriculasDto matriculasDto)
@@ -81,7 +81,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
             return BadRequest("Error update Registration");
         }
 
-        [HttpDelete("DeleteRegistration/{id:int}")]
+        [HttpDelete("delete-registration/{id:int}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<MatriculasDto>> DeleteRegistration(int id)
