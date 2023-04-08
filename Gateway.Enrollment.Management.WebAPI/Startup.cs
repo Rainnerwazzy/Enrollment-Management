@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MMLib.SwaggerForOcelot.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -23,8 +24,25 @@ namespace Gateway.Enrollment.Management.WebAPI
 
         public Startup(IWebHostEnvironment env)
         {
-      
-            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("ocelot.json", optional: false, reloadOnChange: true).AddEnvironmentVariables();
+
+            var ocelotJson = new JObject();
+            foreach (var jsonFilename in Directory.EnumerateFiles("Routes", "ocelot.*.json", SearchOption.AllDirectories))
+            {
+                using (StreamReader fi = File.OpenText(jsonFilename))
+                {
+                    var json = JObject.Parse(fi.ReadToEnd());
+                    ocelotJson.Merge(json, new JsonMergeSettings
+                    {
+                        MergeArrayHandling = MergeArrayHandling.Union
+                    });
+                }
+            }
+
+            File.WriteAllText("ocelot.json", ocelotJson.ToString());
+
+            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
+                .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"ocelot.{env.EnvironmentName}.json",optional: true, reloadOnChange: true).AddEnvironmentVariables();
 
             Configuration = builder.Build();
         }
@@ -32,9 +50,10 @@ namespace Gateway.Enrollment.Management.WebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerForOcelot(Configuration);
             services.AddOcelot(Configuration);
+            services.AddControllers();
+            services.AddSwaggerGen();           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,20 +62,26 @@ namespace Gateway.Enrollment.Management.WebAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI();
+               // app.UseSwaggerUI();
             }
 
-            app.UseOcelot();
-            app.UseHttpsRedirection();
+           // app.UseOcelot();
+            //app.UseHttpsRedirection();
 
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseSwaggerForOcelotUI(options =>
             {
-                endpoints.MapControllers();
-            });
+                options.PathToSwaggerGenerator = "/swagger/docs";
+
+            }).UseOcelot().Wait();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
     }
 }

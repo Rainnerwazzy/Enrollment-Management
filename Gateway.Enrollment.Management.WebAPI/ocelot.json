@@ -1,148 +1,96 @@
 {
   "Routes": [
-    //"coursesAPI": "http://localhost:5001",
     {
-      "DownstreamPathTemplate": "/api/v1/courses/get-all-courses",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
+      "SwaggerKey": "courses",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/courses/get-all-courses",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/courses/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/courses/get-course-by-id/{id:int}",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
+      "SwaggerKey": "registrations",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": "5002"
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/courses/get-course-by-id/{id:int}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/registrations/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/courses/create-course",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
+      "SwaggerKey": "students",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": "5003"
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/courses/create-course",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/courses/update-course",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5001
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/courses/update-course",
-      "UpstreamHttpMethod": [ "PUT" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/courses/delete-course/{id:int}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5001
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/courses/delete-course/{id:int}",
-      "UpstreamHttpMethod": [ "DELETE" ]
-    },
-
-    //"registrationAPI": "http://localhost:5002",
-    {
-      "DownstreamPathTemplate": "/api/v1/registration/get-all-registrations",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/registration/get-all-registrations",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/registration/get-registration-by-id/{id:int}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/registration/get-registration-by-id/{id:int}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/registration/create-registration",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/registration/create-registration",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/registration/update-registration",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/registration/update-registration",
-      "UpstreamHttpMethod": [ "PUT" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/registration/delete-registration/{id:int}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v1/registration/delete-registration/{id:int}",
-      "UpstreamHttpMethod": [ "DELETE" ]
+      "UpstreamPathTemplate": "/students/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
     }
-
-    //"CouponAPI": "https://localhost:5003"
-    //{
-    //  "DownstreamPathTemplate": "/api/v1/coupon/{couponCode}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 4450
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/api/v1/coupon/{couponCode}",
-    //  "UpstreamHttpMethod": [ "GET" ],
-    //  "AuthenticationOptions": {
-    //    "AuthenticationProviderKey": "Bearer",
-    //    "AllowedScopes": [ "geek_shopping" ]
-    //  }
-    //}
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7205"
-  }
+    "BaseUrl": "http://localhost:5205"
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "courses",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Courses.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/courses/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "students",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Student.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/students/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "registrations",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Registration.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/registrations/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
 }

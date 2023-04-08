@@ -1,0 +1,89 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "SwaggerKey": "registrations",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5002"
+        }
+      ],
+      "UpstreamPathTemplate": "/registrations/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+  ]
+  //"Routes": [
+  //  {
+  //    "DownstreamPathTemplate": "/api/v1/registration/get-all-registrations",
+  //    "DownstreamScheme": "https",
+  //    "SwaggerKey": "registration",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/v1/registration/get-all-registrations",
+  //    "UpstreamHttpMethod": [ "GET" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/v1/registration/get-registration-by-id/{id:int}",
+  //    "DownstreamScheme": "https",
+  //    "SwaggerKey": "registration",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/v1/registration/get-registration-by-id/{id:int}",
+  //    "UpstreamHttpMethod": [ "GET" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/v1/registration/create-registration",
+  //    "DownstreamScheme": "https",
+  //    "SwaggerKey": "registration",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/v1/registration/create-registration",
+  //    "UpstreamHttpMethod": [ "POST" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/v1/registration/update-registration",
+  //    "DownstreamScheme": "https",
+  //    "SwaggerKey": "registration",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/v1/registration/update-registration",
+  //    "UpstreamHttpMethod": [ "PUT" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/v1/registration/delete-registration/{id:int}",
+  //    "DownstreamScheme": "https",
+  //    "SwaggerKey": "registration",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/v1/registration/delete-registration/{id:int}",
+  //    "UpstreamHttpMethod": [ "DELETE" ]
+  //  }
+  //]
+}

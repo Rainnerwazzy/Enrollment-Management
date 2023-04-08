@@ -1,0 +1,48 @@
+{
+  "SwaggerEndPoints": [
+    //{
+    //  "Key": "gatewayWebApi",
+    //  "TransformByOcelotConfig": false,
+    //  "Config": [
+    //    {
+    //      "Name": "Gateway.WebAPI",
+    //      "Version": "1.0",
+    //      "Url": "http://localhost:5205/swagger/v1/swagger.json"
+    //    }
+    //  ]
+    //},
+    {
+      "Key": "courses",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Courses.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/courses/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "students",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Student.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/students/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "registrations",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Registration.API",
+          "Version": "1.0",
+          "Url": "http://localhost:5205/registrations/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
