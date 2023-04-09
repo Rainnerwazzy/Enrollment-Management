@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Enrollment.Management.WebAPI", "Gateway.Enrollment.Management.WebAPI\Gateway.Enrollment.Management.WebAPI.csproj", "{C6496C0D-A1F3-4A0B-9580-D4CA105CB694}"
 EndProject

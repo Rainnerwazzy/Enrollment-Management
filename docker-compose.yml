@@ -11,7 +11,19 @@ services:
     image: ${DOCKER_REGISTRY-}enrollmentmanagementcoursesapi
     build:
       context: .
-      dockerfile: Enrollment.Management.Courses.Api/Dockerfile
+      dockerfile: MicroserviceCourses/Enrollment.Management.Courses.Api/Dockerfile
+
+  enrollment.management.registration.api:
+    image: ${DOCKER_REGISTRY-}enrollmentmanagementregistrationapi
+    build:
+      context: .
+      dockerfile: MicroserviceRegistration/Enrollment.Management.Registration.Api/Dockerfile
+
+  enrollment.management.students.api:
+    image: ${DOCKER_REGISTRY-}enrollmentmanagementstudentsapi
+    build:
+      context: .
+      dockerfile: MicroserviceStudents/Enrollment.Management.Students.Api/Dockerfile
 
 
 
