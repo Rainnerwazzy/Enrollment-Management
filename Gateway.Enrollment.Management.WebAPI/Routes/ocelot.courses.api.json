@@ -5,12 +5,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "courses",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "courses.api",
-          "Port": "80"
-        }
-      ],
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.COURSESAPI",
       "UpstreamPathTemplate": "/courses/{everything}",
       "UpstreamHttpMethod": [
         "GET",

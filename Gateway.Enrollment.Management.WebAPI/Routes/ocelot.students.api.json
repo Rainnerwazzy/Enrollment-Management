@@ -4,12 +4,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "students",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "students.api",
-          "Port": "80"
-        }
-      ],
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.STUDENTSAPI",
       "UpstreamPathTemplate": "/students/{everything}",
       "UpstreamHttpMethod": [
         "GET",

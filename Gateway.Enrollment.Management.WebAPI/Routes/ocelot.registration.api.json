@@ -3,13 +3,9 @@
     {
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
-      "SwaggerKey": "registrations",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "registration.api",
-          "Port": "80"
-        }
-      ],
+      "SwaggerKey": "registrations",     
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.REGISTRATIONAPI",
       "UpstreamPathTemplate": "/registrations/{everything}",
       "UpstreamHttpMethod": [
         "GET",
