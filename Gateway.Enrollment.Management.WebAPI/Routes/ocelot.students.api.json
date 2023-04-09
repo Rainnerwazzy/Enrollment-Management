@@ -4,12 +4,12 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "students",
-      "UseServiceDiscovery": true,
-      "ServiceDiscoveryProvider": {
-        "Host": "enrollment.management.students.api",
-        "Port": 4204,
-        "Type": "Eureka"
-      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4204
+        }
+      ],
       "ServiceName": "SERVICE.ENROLLMENTMANAGEMENTSTUDENTSAPI",
       "UpstreamPathTemplate": "/students/{everything}",
       "UpstreamHttpMethod": [

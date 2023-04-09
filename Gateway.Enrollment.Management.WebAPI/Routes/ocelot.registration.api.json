@@ -4,8 +4,12 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "registrations",
-      "UseServiceDiscovery": true,
-      "ServiceName": "SERVICE.ENROLLMENTMANAGEMENTREGISTRATIONAPI",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4203
+        }
+      ],
       "UpstreamPathTemplate": "/registrations/{everything}",
       "UpstreamHttpMethod": [
         "GET",

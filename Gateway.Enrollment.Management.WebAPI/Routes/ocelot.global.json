@@ -1,11 +1,6 @@
 {
   "GlobalConfiguration": {
     "DownstreamScheme": "http",
-    "UseServiceDiscovery": true,
-    "ServiceDiscoveryProvider": {
-      "Host": "gateway.enrollment.management.webapi",
-      "Port": 80,
-      "Type": "Eureka"
-    }
+    "BaseUrl": "http://localhost:4201"
   }
 }
