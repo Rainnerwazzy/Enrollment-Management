@@ -4,12 +4,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "courses",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 4202
-        }
-      ],
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.enrollmentmanagementcoursesapi",
       "UpstreamPathTemplate": "/courses/{everything}",
       "UpstreamHttpMethod": [
         "GET",
@@ -25,12 +21,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "registrations",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 4203
-        }
-      ],
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.enrollmentmanagementregistrationapi",
       "UpstreamPathTemplate": "/registrations/{everything}",
       "UpstreamHttpMethod": [
         "GET",
@@ -46,13 +38,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "students",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 4204
-        }
-      ],
-      "ServiceName": "SERVICE.ENROLLMENTMANAGEMENTSTUDENTSAPI",
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.enrollmentmanagementstudentsapi",
       "UpstreamPathTemplate": "/students/{everything}",
       "UpstreamHttpMethod": [
         "GET",
@@ -66,8 +53,14 @@
     }
   ],
   "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
     "DownstreamScheme": "http",
-    "BaseUrl": "http://localhost:4201"
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Host": "gateway.enrollment.management.webapi",
+      "Port": 80,
+      "Type": "Eureka"
+    }
   },
   "SwaggerEndPoints": [
     {
@@ -77,7 +70,7 @@
         {
           "Name": "Courses.API",
           "Version": "1.0",
-          "Url": "http://localhost:4201/courses/swagger/v1/swagger.json"
+          "Url": "http://gateway.enrollment.management.webapi:80/courses/swagger/v1/swagger.json"
         }
       ]
     },
@@ -88,7 +81,7 @@
         {
           "Name": "Student.API",
           "Version": "1.0",
-          "Url": "http://localhost:4201/students/swagger/v1/swagger.json"
+          "Url": "http://gateway.enrollment.management.webapi:80/students/swagger/v1/swagger.json"
         }
       ]
     },
@@ -99,7 +92,7 @@
         {
           "Name": "Registration.API",
           "Version": "1.0",
-          "Url": "http://localhost:4201/registrations/swagger/v1/swagger.json"
+          "Url": "http://gateway.enrollment.management.webapi:80/registrations/swagger/v1/swagger.json"
         }
       ]
     }

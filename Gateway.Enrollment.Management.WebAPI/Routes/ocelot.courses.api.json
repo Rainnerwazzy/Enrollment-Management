@@ -5,12 +5,8 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "courses",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 4202
-        }
-      ],
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.enrollmentmanagementcoursesapi",
       "UpstreamPathTemplate": "/courses/{everything}",
       "UpstreamHttpMethod": [
         "GET",

@@ -1,12 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using MMLib.SwaggerForOcelot.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -14,11 +10,7 @@ using Ocelot.Provider.Eureka;
 using Ocelot.Provider.Polly;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Gateway.Enrollment.Management.WebAPI
 {
@@ -46,7 +38,10 @@ namespace Gateway.Enrollment.Management.WebAPI
 
             var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
                 .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"ocelot.{env.EnvironmentName}.json",optional: true, reloadOnChange: true).AddEnvironmentVariables();
+                .AddJsonFile($"ocelot.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.local.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true).AddEnvironmentVariables();
 
             Configuration = builder.Build();
         }
@@ -58,7 +53,7 @@ namespace Gateway.Enrollment.Management.WebAPI
             services.AddSwaggerForOcelot(Configuration);          
             services.AddServiceDiscovery(o => o.UseEureka());
             services.AddControllers();
-            services.AddSwaggerGen();           
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

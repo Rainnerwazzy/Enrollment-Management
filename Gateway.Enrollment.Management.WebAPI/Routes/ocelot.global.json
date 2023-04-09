@@ -1,6 +1,12 @@
 {
   "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
     "DownstreamScheme": "http",
-    "BaseUrl": "http://localhost:4201"
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Host": "gateway.enrollment.management.webapi",
+      "Port": 80,
+      "Type": "Eureka"
+    }
   }
 }

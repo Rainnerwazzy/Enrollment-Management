@@ -1,40 +1,63 @@
 version: '3.4'
 
 services:
+  eureka-server:
+    container_name: eureka-server
+    image: steeltoeoss/eurekaserver:latest
+    restart: on-failure
+    hostname: eureka-server
+    networks:
+      - backend_network
+    #ports:
+    # - "8761:8761"
 
   gateway.enrollment.management.webapi:   
     container_name: gateway.api
     image: ${DOCKER_REGISTRY-}gatewaywebapi
     restart: on-failure
+    hostname: gateway.enrollment.management.webapi
     build:
       context: .
       dockerfile: Gateway.Enrollment.Management.WebAPI/Dockerfile
+    networks:
+      - backend_network
+
 
   enrollment.management.courses.api:
     container_name: courses.api
     image: ${DOCKER_REGISTRY-}coursesapi
     restart: on-failure
+    hostname: enrollment.management.courses.api
     build:
       context: .
       dockerfile: Enrollment.Management.Courses.Api/Dockerfile
+    networks:
+      - backend_network 
 
   enrollment.management.registration.api:
     container_name: registration.api
     image: ${DOCKER_REGISTRY-}registrationapi
     restart: on-failure
+    hostname: enrollment.management.registration.api
     build:
       context: .
       dockerfile: Enrollment.Management.Registration.Api/Dockerfile
+    networks:
+      - backend_network
 
   enrollment.management.students.api:
     container_name: students.api
     image: ${DOCKER_REGISTRY-}studentsapi
     restart: on-failure
+    hostname: enrollment.management.students.api
     build:
       context: .
       dockerfile: Enrollment.Management.Students.Api/Dockerfile
+    networks:
+      - backend_network
 
-
+networks:
+    backend_network:
 
 
 
