@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,7 @@ namespace Enrollment.Management.Students.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddServiceDiscovery(o => o.UseEureka());
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
