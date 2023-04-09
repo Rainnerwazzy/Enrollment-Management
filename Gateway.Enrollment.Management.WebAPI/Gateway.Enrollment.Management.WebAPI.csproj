@@ -22,6 +22,9 @@
 		<PackageReference Include="Ocelot.Provider.Consul" Version="16.0.1" />
 		<PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.2.1" />
 		<PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.2.1" />
+		<PackageReference Include="Ocelot.Provider.Eureka" Version="16.0.1" />
+		<PackageReference Include="Ocelot.Provider.Kubernetes" Version="16.0.1" />
+		<PackageReference Include="Ocelot.Provider.Polly" Version="16.0.1" />
 	</ItemGroup>
 
 </Project>

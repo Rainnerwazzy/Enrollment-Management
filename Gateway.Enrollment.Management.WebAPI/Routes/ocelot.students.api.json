@@ -5,76 +5,22 @@
       "DownstreamScheme": "http",
       "SwaggerKey": "students",
       "UseServiceDiscovery": true,
-      "ServiceName": "SERVICE.STUDENTSAPI",
+      "ServiceDiscoveryProvider": {
+        "Host": "enrollment.management.students.api",
+        "Port": 4204,
+        "Type": "Eureka"
+      },
+      "ServiceName": "SERVICE.ENROLLMENTMANAGEMENTSTUDENTSAPI",
       "UpstreamPathTemplate": "/students/{everything}",
       "UpstreamHttpMethod": [
         "GET",
         "POST",
         "PUT",
         "DELETE"
-      ]
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
     }
   ]
-  //"Routes": [
-  //  {
-  //    "DownstreamPathTemplate": "/api/v1/student/get-all-students",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 5003
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/api/v1/student/get-all-students",
-  //    "UpstreamHttpMethod": [ "GET" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/api/v1/student/get-student-by-id/{id:int}",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 5003
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/api/v1/student/get-student-by-id/{id:int}",
-  //    "UpstreamHttpMethod": [ "GET" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/api/v1/student/create-student",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 5003
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/api/v1/student/create-student",
-  //    "UpstreamHttpMethod": [ "POST" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/api/v1/student/update-student",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 5003
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/api/v1/student/update-student",
-  //    "UpstreamHttpMethod": [ "PUT" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/api/v1/student/delete-student/{id:int}",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 5003
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/api/v1/student/delete-student/{id:int}",
-  //    "UpstreamHttpMethod": [ "DELETE" ]
-  //  }
-  //]
 }

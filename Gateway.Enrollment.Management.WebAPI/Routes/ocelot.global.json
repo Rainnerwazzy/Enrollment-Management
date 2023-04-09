@@ -3,7 +3,7 @@
     "DownstreamScheme": "http",
     "UseServiceDiscovery": true,
     "ServiceDiscoveryProvider": {
-      "Host": "gateway.api",
+      "Host": "gateway.enrollment.management.webapi",
       "Port": 80,
       "Type": "Eureka"
     }

@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+  
   eureka-server:
     container_name: eureka-server
     image: steeltoeoss/eurekaserver:latest
@@ -13,9 +14,9 @@ services:
 
   gateway.enrollment.management.webapi:   
     container_name: gateway.api
-    image: ${DOCKER_REGISTRY-}gatewayenrollmentmanagementwebapi
+    image: ${DOCKER_REGISTRY-}gatewaywebapi
     restart: on-failure
-    hostname: gateway.api
+    hostname: gateway.enrollment.management.webapi
     build:
       context: .
       dockerfile: Gateway.Enrollment.Management.WebAPI/Dockerfile
@@ -24,9 +25,9 @@ services:
 
   enrollment.management.courses.api:
     container_name: courses.api
-    image: ${DOCKER_REGISTRY-}enrollmentmanagementcoursesapi
+    image: ${DOCKER_REGISTRY-}coursesapi
     restart: on-failure
-    hostname: courses.api
+    hostname: enrollment.management.courses.api
     build:
       context: .
       dockerfile: Enrollment.Management.Courses.Api/Dockerfile
@@ -35,9 +36,9 @@ services:
 
   enrollment.management.registration.api:
     container_name: registration.api
-    image: ${DOCKER_REGISTRY-}enrollmentmanagementregistrationapi
+    image: ${DOCKER_REGISTRY-}registrationapi
     restart: on-failure
-    hostname: registration.api
+    hostname: enrollment.management.registration.api
     build:
       context: .
       dockerfile: Enrollment.Management.Registration.Api/Dockerfile
@@ -46,9 +47,9 @@ services:
 
   enrollment.management.students.api:
     container_name: students.api
-    image: ${DOCKER_REGISTRY-}enrollmentmanagementstudentsapi
+    image: ${DOCKER_REGISTRY-}studentsapi
     restart: on-failure
-    hostname: students.api
+    hostname: enrollment.management.students.api
     build:
       context: .
       dockerfile: Enrollment.Management.Students.Api/Dockerfile

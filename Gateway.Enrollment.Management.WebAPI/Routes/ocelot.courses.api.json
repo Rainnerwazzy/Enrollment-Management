@@ -5,15 +5,18 @@
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "SwaggerKey": "courses",
-      "UseServiceDiscovery": true,
-      "ServiceName": "SERVICE.COURSESAPI",
+      "UseServiceDiscovery": true,    
+      "ServiceName": "SERVICE.ENROLLMENTMANAGEMENTCOURSESAPI",
       "UpstreamPathTemplate": "/courses/{everything}",
       "UpstreamHttpMethod": [
         "GET",
         "POST",
         "PUT",
         "DELETE"
-      ]
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
     }
   ]
 

@@ -10,6 +10,8 @@ using MMLib.SwaggerForOcelot.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Eureka;
+using Ocelot.Provider.Polly;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
 using System;
@@ -52,8 +54,8 @@ namespace Gateway.Enrollment.Management.WebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSwaggerForOcelot(Configuration);
-            services.AddOcelot(Configuration);
+            services.AddOcelot(Configuration).AddEureka().AddPolly();
+            services.AddSwaggerForOcelot(Configuration);          
             services.AddServiceDiscovery(o => o.UseEureka());
             services.AddControllers();
             services.AddSwaggerGen();           
