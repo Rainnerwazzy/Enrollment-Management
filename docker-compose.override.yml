@@ -13,7 +13,7 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     ports:
-      - "4201:80"
+      - "5201:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -28,8 +28,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
     ports:
-      - "4202:80"
+      - "5202:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -41,8 +42,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
     ports:
-      - "4203:80"
+      - "5203:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -54,8 +56,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
     ports:
-      - "4204:80"
+      - "5204:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

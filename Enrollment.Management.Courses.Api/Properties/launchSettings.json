@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": false,
     "iisExpress": {
-      "applicationUrl": "https://localhost:4202",
+      "applicationUrl": "https://localhost:5202",
       "sslPort": 0
     }
   },
@@ -24,7 +24,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:4202"
+      "applicationUrl": "http://localhost:5202"
     },
     "Docker": {
       "commandName": "Docker",

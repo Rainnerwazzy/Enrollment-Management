@@ -19,6 +19,7 @@ namespace Enrollment.Management.Registration.Api.Configurations
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IRegistrationRepository, RegistrationRepository>();
             services.AddScoped<IRegistrationService, RegistrationService>();
+            services.AddScoped<ISenderEmailService, SenderEmailService>();
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
         }
     }
