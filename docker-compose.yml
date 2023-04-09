@@ -6,7 +6,7 @@ services:
     container_name: eureka-server
     image: steeltoeoss/eurekaserver:latest
     restart: on-failure
-    hostname: eureka-server
+    hostname: localhost
     networks:
       - backend_network
     #ports:
