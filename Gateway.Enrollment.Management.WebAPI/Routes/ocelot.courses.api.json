@@ -7,7 +7,7 @@
       "SwaggerKey": "courses",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "courses.api",
           "Port": "80"
         }
       ],

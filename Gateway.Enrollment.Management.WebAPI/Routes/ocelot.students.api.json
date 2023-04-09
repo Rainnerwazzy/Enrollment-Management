@@ -6,7 +6,7 @@
       "SwaggerKey": "students",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "students.api",
           "Port": "80"
         }
       ],
