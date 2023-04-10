@@ -1,10 +1,10 @@
 {
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:5202",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:6655",
+      "sslPort": 6655
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -18,7 +18,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "Enrollment.Management.Courses.Api": {
+    "JWTAuthorization.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -26,14 +26,15 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       },
-      "applicationUrl": "http://localhost:5202"
+      "dotnetRunMessages": "true",
+      "applicationUrl": "https://localhost:6655;http://localhost:6000"
     },
-    "Docker": {
+    "Docker (1)": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
-      "useSSL": false
+      "useSSL": true
     }
   }
 }
