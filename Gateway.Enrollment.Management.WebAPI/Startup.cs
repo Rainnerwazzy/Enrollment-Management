@@ -66,7 +66,7 @@ namespace Gateway.Enrollment.Management.WebAPI
             }
 
            // app.UseOcelot();
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             //app.UseRouting();
 

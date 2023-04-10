@@ -45,7 +45,7 @@ namespace Enrollment.Management.Courses.Api
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                     {
-                        options.Authority = "https://localhost:6655/swagger/";
+                        options.Authority = "https://localhost:5001/";
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateAudience = false

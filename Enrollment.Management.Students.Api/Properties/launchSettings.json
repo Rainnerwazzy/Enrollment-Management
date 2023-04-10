@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "https://localhost:5204",
-      "sslPort": 0
+      "sslPort": 5204
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
