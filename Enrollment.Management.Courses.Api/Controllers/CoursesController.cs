@@ -12,7 +12,8 @@ namespace Enrollment.Management.Courses.Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Produces("application/json")]    
+    [Produces("application/json")]
+    [Authorize("Bearer")]
     public class CoursesController : Controller
     {
         private readonly ICoursesService _service;
@@ -28,7 +29,6 @@ namespace Enrollment.Management.Courses.Api.Controllers
         [ProducesResponseType(typeof(IEnumerable<CursosDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<CursosDto>>> GetAllCourses()
         {
             var result = await _service.GetAllCoursesAsync();
@@ -42,7 +42,6 @@ namespace Enrollment.Management.Courses.Api.Controllers
         [HttpGet("get-course-by-id/{id:int}")]
         [ProducesResponseType(typeof(CursosDto), 200)]
         [ProducesResponseType(404)]
-        [Authorize]
         public async Task<ActionResult<CursosDto>> GetCourseById(int id)
         {
             var result = await _service.GetCourseByIdAsync(id);
@@ -56,7 +55,6 @@ namespace Enrollment.Management.Courses.Api.Controllers
         [HttpPost("create-course")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        [Authorize]
         public async Task<ActionResult<CursosDto>> CreateCourse([FromBody] CursosDto cursosDto)
         {
             if (!ModelState.IsValid)
@@ -73,7 +71,6 @@ namespace Enrollment.Management.Courses.Api.Controllers
         [HttpPut("update-course")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        [Authorize]
         public async Task<ActionResult> UpdateCourse([FromBody] CursosDto cursosDto)
         {
             if (!ModelState.IsValid)
@@ -90,7 +87,6 @@ namespace Enrollment.Management.Courses.Api.Controllers
         [HttpDelete("delete-course/{id:int}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        [Authorize]
         public async Task<ActionResult<CursosDto>> DeleteCourse(int id)
         {
             var result = await _service.DeleteCourseAsync(id);

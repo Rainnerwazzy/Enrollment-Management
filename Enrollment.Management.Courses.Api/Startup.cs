@@ -1,6 +1,10 @@
 using Enrollment.Management.Courses.Api.Configurations;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,48 +32,54 @@ namespace Enrollment.Management.Courses.Api
         {
             services.AddServiceDiscovery(o => o.UseEureka());
             services.AddControllers();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            IdentityModelEventSource.ShowPII = true;
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "geek_universidade");
+                });
+            });
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
-             {
-                 options.Authority = "https://localhost:6655/swagger/index.html";
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateAudience = false,
-                     ValidateIssuer = false,
-                     ValidateIssuerSigningKey = true
-                 };
-             });
+                    {
+                        options.Authority = "https://localhost:6655/swagger/";
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateAudience = false
+                        };
+                    });
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Courses.Api", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    In = ParameterLocation.Header,
-                    Description = "Please enter a valid token",
+                    Description = @"Enter 'Bearer' [space] and your token!",
                     Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
                     {
+                        new OpenApiSecurityScheme
                         {
-                            new OpenApiSecurityScheme
+                            Reference = new OpenApiReference
                             {
-                                Reference = new OpenApiReference
-                                {
-                                    Type=ReferenceType.SecurityScheme,
-                                    Id="Bearer"
-                                }
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
                             },
-                            new List<string> ()
-                        }
-                    });
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In= ParameterLocation.Header
+                        },
+                        new List<string> ()
+                    }
+                });
             });
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddInfrastructureApi(Configuration);

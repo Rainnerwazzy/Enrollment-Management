@@ -33,8 +33,6 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JWTAuthorization", "JWTAuthorization", "{B9BB5EE9-F6BC-4EDA-806B-EF316FA35008}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuthorization.Api", "JWTAuthorization.Api\JWTAuthorization.Api.csproj", "{8DAE354F-1891-4501-963D-DB41EA618A05}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,10 +83,6 @@ Global
 		{3273C76F-9CC7-478E-8C65-7400855B1861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3273C76F-9CC7-478E-8C65-7400855B1861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3273C76F-9CC7-478E-8C65-7400855B1861}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DAE354F-1891-4501-963D-DB41EA618A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DAE354F-1891-4501-963D-DB41EA618A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DAE354F-1891-4501-963D-DB41EA618A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DAE354F-1891-4501-963D-DB41EA618A05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,7 +97,6 @@ Global
 		{45E05520-0AC2-4D67-BF96-8DE18A08749B} = {21456392-D802-4FCD-99E5-99E30B49C68E}
 		{DF6CDFF5-82F1-405F-A6AE-C9D16354DECC} = {21456392-D802-4FCD-99E5-99E30B49C68E}
 		{23A80128-E61D-49A1-B808-C915D72E2233} = {21456392-D802-4FCD-99E5-99E30B49C68E}
-		{8DAE354F-1891-4501-963D-DB41EA618A05} = {B9BB5EE9-F6BC-4EDA-806B-EF316FA35008}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B196D38-2A1D-4E25-93A5-1562A9E83185}
