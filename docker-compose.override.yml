@@ -6,7 +6,7 @@ services:
       - EUREKA_SERVER_ENABLE_SELF_PRESERVATION=false
     ports:
       - 8761:8761
-
+  
   gateway.enrollment.management.webapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -22,6 +22,8 @@ services:
       - enrollment.management.courses.api
       - enrollment.management.registration.api
       - enrollment.management.students.api
+      - jwtauthorization.api
+      - gettoken.api
 
   jwtauthorization.api:
     environment:

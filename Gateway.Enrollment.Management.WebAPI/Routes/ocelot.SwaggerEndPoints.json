@@ -5,7 +5,7 @@
       "TransformByOcelotConfig": true,
       "Config": [
         {
-          "Name": "Courses.API",
+          "Name": "GetToken.API",
           "Version": "1.0",
           "Url": "http://gateway.enrollment.management.webapi:80/gettoken/swagger/v1/swagger.json"
         }
@@ -16,9 +16,9 @@
       "TransformByOcelotConfig": true,
       "Config": [
         {
-          "Name": "Courses.API",
+          "Name": "JWTAuthentication.API",
           "Version": "1.0",
-          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication/swagger/v1/swagger.json"
+          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication"
         }
       ]
     },

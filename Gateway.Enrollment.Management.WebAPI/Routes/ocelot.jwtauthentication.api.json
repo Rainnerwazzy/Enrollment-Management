@@ -1,12 +1,12 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/",
       "DownstreamScheme": "http",
       "SwaggerKey": "jwtauthorization",
       "UseServiceDiscovery": true,
       "ServiceName": "SERVICE.jwtauthorizationapi",
-      "UpstreamPathTemplate": "/jwtauthorization/{everything}",
+      "UpstreamPathTemplate": "/jwtauthorization",
       "UpstreamHttpMethod": [
         "GET",
         "POST",

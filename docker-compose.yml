@@ -11,6 +11,14 @@ services:
     #ports:
     # - "8761:8761"
 
+  db:
+        image: "mcr.microsoft.com/mssql/server:2022-latest"
+        ports:
+          - "1433:1433"
+        environment:
+            SA_PASSWORD: "PcCNPq2011."
+            ACCEPT_EULA: "Y"
+
   gateway.enrollment.management.webapi:   
     container_name: gateway.api
     image: ${DOCKER_REGISTRY-}gatewaywebapi

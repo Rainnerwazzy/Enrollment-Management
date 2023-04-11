@@ -20,6 +20,40 @@
     {
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
+      "SwaggerKey": "gettoken",
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.gettokenapi",
+      "UpstreamPathTemplate": "/gettoken/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "SwaggerKey": "jwtauthorization",
+      "UseServiceDiscovery": true,
+      "ServiceName": "SERVICE.jwtauthorizationapi",
+      "UpstreamPathTemplate": "/jwtauthorization/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
       "SwaggerKey": "registrations",
       "UseServiceDiscovery": true,
       "ServiceName": "SERVICE.enrollmentmanagementregistrationapi",
@@ -64,13 +98,35 @@
   },
   "SwaggerEndPoints": [
     {
+      "Key": "gettoken",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "GetToken.API",
+          "Version": "1.0",
+          "Url": "http://gateway.enrollment.management.webapi:80/gettoken/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "jwtauthentication",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "JWTAuthentication.API",
+          "Version": "1.0",
+          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
       "Key": "courses",
       "TransformByOcelotConfig": true,
       "Config": [
         {
           "Name": "Courses.API",
           "Version": "1.0",
-          "Url": "http://gateway.enrollment.management.webapi:80/api/v1/gateway"
+          "Url": "http://gateway.enrollment.management.webapi:80/courses/swagger/v1/swagger.json"
         }
       ]
     },

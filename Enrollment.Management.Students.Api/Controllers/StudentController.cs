@@ -13,7 +13,7 @@ namespace Enrollment.Management.Students.Api.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
-    [Authorize]
+    //[Authorize]
     public class StudentController : Controller
     {
         private readonly IStudentsService _service;

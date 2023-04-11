@@ -13,7 +13,7 @@
         "POST",
         "PUT",
         "DELETE"
-      ],
+      ],    
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       }

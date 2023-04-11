@@ -12,7 +12,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
-    [Authorize]
+    //[Authorize]
     public class RegistrationController : Controller
     {
         private readonly IRegistrationService _service;

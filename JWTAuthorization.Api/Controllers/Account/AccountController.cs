@@ -94,7 +94,7 @@ namespace IdentityServerHost.Quickstart.UI
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
 
-            // the user clicked the "cancel" button
+            
             if (button != "login")
             {
                 if (context != null)
@@ -161,13 +161,10 @@ namespace IdentityServerHost.Quickstart.UI
                     if (context != null)
                     {
                         if (context.IsNativeClient())
-                        {
-                            // The client is native, so this change in how to
-                            // return the response is for better UX for the end user.
+                        {                           
                             return this.LoadingPage("Redirect", model.ReturnUrl);
                         }
-
-                        // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
+                        
                         return Redirect(model.ReturnUrl);
                     }
 
@@ -193,25 +190,16 @@ namespace IdentityServerHost.Quickstart.UI
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
-            // something went wrong, show form with error
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
         }
 
-        [HttpGet("token")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GetToken()
-        {
-            var token = await HttpContext.GetTokenAsync("access_token");
-            return Ok(token);
-        }
         /// <summary>
         /// Show logout page
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
-            var token = await HttpContext.GetTokenAsync("access_token");
             // build a model so the logout page knows what to display
             var vm = await BuildLogoutViewModelAsync(logoutId);
 
@@ -421,9 +409,7 @@ namespace IdentityServerHost.Quickstart.UI
             };
         }
 
-        /*****************************************/
-        /* helper APIs for the AccountController */
-        /*****************************************/
+       
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);

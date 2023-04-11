@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
@@ -32,7 +33,7 @@ namespace GetToken.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddServiceDiscovery(o => o.UseEureka());
-
+            IdentityModelEventSource.ShowPII = true;
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
