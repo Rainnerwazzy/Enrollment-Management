@@ -28,7 +28,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
-      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=universidade.database.windows.net;Initial Catalog=UNIVERSIDADE;User Id=rainner123; Password=PcCNPq2011.; Integrated Security=False
     ports:
       - "4435:80"
     volumes:
@@ -42,7 +42,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
-      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=universidade.database.windows.net;Initial Catalog=UNIVERSIDADE;User Id=rainner123; Password=PcCNPq2011.; Integrated Security=False
     ports:
       - "4430:80"
     volumes:
@@ -56,7 +56,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
-      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=universidade.database.windows.net;Initial Catalog=UNIVERSIDADE;User Id=rainner123; Password=PcCNPq2011.; Integrated Security=False
     ports:
       - "5202:80"
     volumes:
@@ -70,7 +70,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
-      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=universidade.database.windows.net;Initial Catalog=UNIVERSIDADE;User Id=rainner123; Password=PcCNPq2011.; Integrated Security=False
     ports:
       - "5203:80"
     volumes:
@@ -84,7 +84,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
-      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=universidade.database.windows.net;Initial Catalog=UNIVERSIDADE;User Id=rainner123; Password=PcCNPq2011.; Integrated Security=False
     ports:
       - "5204:80"
     volumes:
