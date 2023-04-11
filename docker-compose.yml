@@ -22,6 +22,28 @@ services:
     networks:
       - backend_network
 
+  jwtauthorization.api:   
+    container_name: jwtauthorization.api
+    image: ${DOCKER_REGISTRY-}jwtauthorizationapi
+    restart: on-failure
+    hostname: jwtauthorization.api
+    build:
+      context: .
+      dockerfile: JWTAuthorization.Api/Dockerfile
+    networks:
+      - backend_network
+
+  gettoken.api:   
+    container_name: gettoken.api
+    image: ${DOCKER_REGISTRY-}gettokenapi
+    restart: on-failure
+    hostname: gettoken.api
+    build:
+      context: .
+      dockerfile: GetToken.Api/Dockerfile
+    networks:
+      - backend_network
+
 
   enrollment.management.courses.api:
     container_name: courses.api

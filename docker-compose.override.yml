@@ -23,6 +23,34 @@ services:
       - enrollment.management.registration.api
       - enrollment.management.students.api
 
+  jwtauthorization.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+    ports:
+      - "4435:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - eureka-server
+
+  gettoken.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=26.137.207.85;Initial Catalog=UNIVERSIDADE;User Id=sa; Password=PcCNPq2011.; Integrated Security=False
+    ports:
+      - "4430:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - eureka-server
+
   enrollment.management.courses.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
