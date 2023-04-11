@@ -2,19 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>e98df7bd-4104-422f-b481-b59973318ed4</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="IdentityServer4" Version="4.1.2" />
+	  <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+	  <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+	  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.2.1" />
+	  <PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" /> 
-	<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="5.2.4" />
 	<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17" />
-	<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.32" />
+	<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
 	<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">

@@ -3,6 +3,11 @@
 
 
 using IdentityModel;
+using IdentityServer4;
+using IdentityServer4.Events;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,11 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Duende.IdentityServer;
-using Duende.IdentityServer.Events;
-using Duende.IdentityServer.Services;
-using Duende.IdentityServer.Stores;
-using Duende.IdentityServer.Test;
+
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -134,7 +135,7 @@ namespace IdentityServerHost.Quickstart.UI
 
             if (context != null)
             {
-                if (context.IsNativeClient())
+                //if (context.IsNativeClient())
                 {
                     // The client is native, so this change in how to
                     // return the response is for better UX for the end user.

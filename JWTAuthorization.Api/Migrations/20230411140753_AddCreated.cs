@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JWTAuthorization.Api.Migrations
 {
-    public partial class AddSecurity : Migration
+    public partial class AddCreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

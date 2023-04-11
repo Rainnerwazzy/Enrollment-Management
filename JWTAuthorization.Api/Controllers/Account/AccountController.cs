@@ -1,15 +1,14 @@
 // Copyright (c) Duende Software. All rights reserved.
 // See LICENSE in the project root for license information.
 
-
-using Duende.IdentityServer;
-using Duende.IdentityServer.Events;
-using Duende.IdentityServer.Extensions;
-using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Services;
-using Duende.IdentityServer.Stores;
 using GeekShopping.IdentityServer.MainModule.Account;
 using IdentityModel;
+using IdentityServer4;
+using IdentityServer4.Events;
+using IdentityServer4.Extensions;
+using IdentityServer4.Models;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
 using JWTAuthorization.Api.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -40,14 +39,13 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
-        private readonly IIdentityProviderStore _identityProviderStore;
+       // private readonly IIdentityProviderStore _identityProviderStore;
         private readonly IEventService _events;
 
         public AccountController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IIdentityProviderStore identityProviderStore,
             IEventService events,
 
             UserManager<ApplicationUser> userManager,
@@ -58,7 +56,6 @@ namespace IdentityServerHost.Quickstart.UI
             _interaction = interaction;
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
-            _identityProviderStore = identityProviderStore;
             _events = events;
 
             _roleManager = roleManager;
@@ -105,7 +102,7 @@ namespace IdentityServerHost.Quickstart.UI
                     await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
 
                     // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                    if (context.IsNativeClient())
+                   // if (context.Client)
                     {
                         // The client is native, so this change in how to
                         // return the response is for better UX for the end user.
@@ -160,7 +157,7 @@ namespace IdentityServerHost.Quickstart.UI
                     
                     if (context != null)
                     {
-                        if (context.IsNativeClient())
+                        //if (context.Client.)
                         {                           
                             return this.LoadingPage("Redirect", model.ReturnUrl);
                         }
@@ -313,7 +310,7 @@ namespace IdentityServerHost.Quickstart.UI
 
                         if (context != null)
                         {
-                            if (context.IsNativeClient())
+                            //if (context.IsNativeClient())
                             {
                                 // The client is native, so this change in how to
                                 // return the response is for better UX for the end user.
@@ -415,7 +412,7 @@ namespace IdentityServerHost.Quickstart.UI
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
             {
-                var local = context.IdP == Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider;
+                var local = context.IdP == IdentityServer4.IdentityServerConstants.LocalIdentityProvider;
 
                 // this is meant to short circuit the UI and only trigger the one external IdP
                 var vm = new LoginViewModel
@@ -443,14 +440,14 @@ namespace IdentityServerHost.Quickstart.UI
                     AuthenticationScheme = x.Name
                 }).ToList();
 
-            var dyanmicSchemes = (await _identityProviderStore.GetAllSchemeNamesAsync())
-                .Where(x => x.Enabled)
-                .Select(x => new ExternalProvider
-                {
-                    AuthenticationScheme = x.Scheme,
-                    DisplayName = x.DisplayName
-                });
-            providers.AddRange(dyanmicSchemes);
+            //var dyanmicSchemes = (await _identityProviderStore.GetAllSchemeNamesAsync())
+            //    .Where(x => x.Enabled)
+            //    .Select(x => new ExternalProvider
+            //    {
+            //        AuthenticationScheme = x.Scheme,
+            //        DisplayName = x.DisplayName
+            //    });
+            //providers.AddRange(dyanmicSchemes);
 
             var allowLocal = true;
             if (context?.Client.ClientId != null)
@@ -526,7 +523,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (User?.Identity.IsAuthenticated == true)
             {
                 var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
-                if (idp != null && idp != Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider)
+                if (idp != null && idp != IdentityServer4.IdentityServerConstants.LocalIdentityProvider)
                 {
                     var providerSupportsSignout = await HttpContext.GetSchemeSupportsSignOutAsync(idp);
                     if (providerSupportsSignout)

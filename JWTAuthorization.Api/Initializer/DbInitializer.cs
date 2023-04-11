@@ -26,10 +26,10 @@ namespace JWTAuthorization.Api.Initializer
             _role = role;
         }
 
-        public async Task Initialize()
+        public void Initialize()
         {
                       
-           await _role.CreateAsync(new IdentityRole(IdentityConfiguration.Client));
+            _role.CreateAsync(new IdentityRole(IdentityConfiguration.Client)).GetAwaiter().GetResult(); 
     
             ApplicationUser client = new ApplicationUser()
             {
@@ -41,16 +41,16 @@ namespace JWTAuthorization.Api.Initializer
                 LastName = "Client"
             };
 
-            await _user.CreateAsync(client, "Rainner123$");
-            await _user.AddToRoleAsync(client, IdentityConfiguration.Client);
+             _user.CreateAsync(client, "Rainner123$").GetAwaiter().GetResult(); 
+             _user.AddToRoleAsync(client, IdentityConfiguration.Client).GetAwaiter().GetResult(); 
 
-            var clientClaims = await _user.AddClaimsAsync(client, new Claim[]
+            var clientClaims =  _user.AddClaimsAsync(client, new Claim[]
             {
                 new Claim(JwtClaimTypes.Name, $"{client.FirstName} {client.LastName}"),
                 new Claim(JwtClaimTypes.GivenName, client.FirstName),
                 new Claim(JwtClaimTypes.FamilyName, client.LastName),
                 new Claim(JwtClaimTypes.Role, IdentityConfiguration.Client)
-            });
+            }).Result; 
         }
     }
 }

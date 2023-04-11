@@ -9,12 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
-using Duende.IdentityServer.Events;
-using Duende.IdentityServer.Extensions;
-using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Services;
-using Duende.IdentityServer.Validation;
 using IdentityModel;
+using IdentityServer4.Services;
+using IdentityServer4.Models;
+using IdentityServer4.Events;
+using IdentityServer4.Extensions;
+using IdentityServer4.Validation;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -68,7 +68,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (result.IsRedirect)
             {
                 var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-                if (context?.IsNativeClient() == true)
+                //if (context?.IsNativeClient() == true)
                 {
                     // The client is native, so this change in how to
                     // return the response is for better UX for the end user.
@@ -121,7 +121,7 @@ namespace IdentityServerHost.Quickstart.UI
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
                     {
-                        scopes = scopes.Where(x => x != Duende.IdentityServer.IdentityServerConstants.StandardScopes.OfflineAccess);
+                        scopes = scopes.Where(x => x != IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
                     }
 
                     grantedConsent = new ConsentResponse
@@ -199,7 +199,7 @@ namespace IdentityServerHost.Quickstart.UI
                 .Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null))
                 .ToArray();
 
-            var resourceIndicators = request.Parameters.GetValues(OidcConstants.AuthorizeRequest.Resource) ?? Enumerable.Empty<string>();
+            var resourceIndicators = request.Parameters.GetValues(OidcConstants.AuthorizeRequest.Request) ?? Enumerable.Empty<string>();
             var apiResources = request.ValidatedResources.Resources.ApiResources.Where(x => resourceIndicators.Contains(x.Name));
 
             var apiScopes = new List<ScopeViewModel>();
@@ -220,7 +220,7 @@ namespace IdentityServerHost.Quickstart.UI
             }
             if (ConsentOptions.EnableOfflineAccess && request.ValidatedResources.Resources.OfflineAccess)
             {
-                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(Duende.IdentityServer.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
+                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
             }
             vm.ApiScopes = apiScopes;
 
@@ -265,7 +265,7 @@ namespace IdentityServerHost.Quickstart.UI
         {
             return new ScopeViewModel
             {
-                Value = Duende.IdentityServer.IdentityServerConstants.StandardScopes.OfflineAccess,
+                Value = IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
                 Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,

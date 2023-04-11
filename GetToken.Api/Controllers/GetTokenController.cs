@@ -31,7 +31,21 @@ namespace GetToken.Api.Controllers
         [Authorize]
         public async Task<ActionResult> GetAllRegistrations()
         {
-            var token = await HttpContext.GetTokenAsync("access_token");
+            var client = new HttpClient();
+            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:4435");
+            if (disco.IsError)
+            {
+                Console.WriteLine(disco.Error);
+            }
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = disco.TokenEndpoint,
+                ClientId = "geek_universidade",
+                ClientSecret = "my_super_secret",
+                Scope = "geek_universidade"
+            });
+
+            var token = tokenResponse.AccessToken;
 
             if (!string.IsNullOrEmpty(token)) 
             {

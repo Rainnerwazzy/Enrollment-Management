@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JWTAuthorization.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230410173119_AddSecurity")]
-    partial class AddSecurity
+    [Migration("20230411140753_AddCreated")]
+    partial class AddCreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

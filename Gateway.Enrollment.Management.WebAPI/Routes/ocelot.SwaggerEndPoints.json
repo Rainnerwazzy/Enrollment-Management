@@ -18,7 +18,7 @@
         {
           "Name": "JWTAuthentication.API",
           "Version": "1.0",
-          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication"
+          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication/swagger/v1/swagger.json"
         }
       ]
     },

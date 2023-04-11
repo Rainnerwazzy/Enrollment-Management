@@ -1,5 +1,5 @@
-﻿using Duende.IdentityServer;
-using Duende.IdentityServer.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,8 @@ namespace JWTAuthorization.Api.Configuration
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("geek_universidade", "JWTAuthorization Api"),
+                new ApiScope("geek_universidade", "JWTAuthorization Api."),
+                new ApiScope("client_test", "JWTAuthorization Api Client test"),
                 new ApiScope(name: "read", "Read data."),
                 new ApiScope(name: "write", "Write data."),
                 new ApiScope(name: "delete", "Delete data."),
@@ -40,11 +41,28 @@ namespace JWTAuthorization.Api.Configuration
                 },
                 new Client
                 {
+                    ClientId = "client_test",
+                    ClientSecrets = { new Secret("my_super_secret".Sha256())},
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = {"https://localhost:4430/swagger/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:4430/swagger/signout-callback-oidc"},
+                    AllowOfflineAccess = true,
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "client_test"
+                    }
+                },
+                new Client
+                {
                     ClientId = "geek_universidade",
                     ClientSecrets = { new Secret("my_super_secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = {"https://localhost:4430/swagger/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:4430/swagger/signout-callback-oidc"},
+                    AllowOfflineAccess = true,
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

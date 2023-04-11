@@ -7,6 +7,6 @@ namespace JWTAuthorization.Api.Initializer
 {
     public interface IDbInitializer
     {
-        public Task Initialize();
+        public void Initialize();
     }
 }

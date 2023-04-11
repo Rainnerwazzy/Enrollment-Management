@@ -18,12 +18,12 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/api/v1/GetToken/get-token",
       "DownstreamScheme": "http",
       "SwaggerKey": "gettoken",
       "UseServiceDiscovery": true,
       "ServiceName": "SERVICE.gettokenapi",
-      "UpstreamPathTemplate": "/gettoken/{everything}",
+      "UpstreamPathTemplate": "/gettoken/api/v1/GetToken/get-token",
       "UpstreamHttpMethod": [
         "GET",
         "POST",
@@ -35,12 +35,12 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/",
       "DownstreamScheme": "http",
       "SwaggerKey": "jwtauthorization",
       "UseServiceDiscovery": true,
       "ServiceName": "SERVICE.jwtauthorizationapi",
-      "UpstreamPathTemplate": "/jwtauthorization/{everything}",
+      "UpstreamPathTemplate": "/jwtauthorization/",
       "UpstreamHttpMethod": [
         "GET",
         "POST",
