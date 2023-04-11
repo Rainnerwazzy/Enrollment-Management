@@ -1,5 +1,6 @@
 ﻿using Enrollment.Management.Courses.Domain.Dtos;
 using Enrollment.Management.Courses.Domain.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,7 +14,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
-    [Authorize("Bearer")]
+    [Authorize]
     public class CoursesController : Controller
     {
         private readonly ICoursesService _service;
@@ -23,6 +24,7 @@ namespace Enrollment.Management.Courses.Api.Controllers
         {
             _service = service;
             _logger = logger;
+
         }
 
         [HttpGet("get-all-courses")]

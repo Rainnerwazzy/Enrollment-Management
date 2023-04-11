@@ -8,8 +8,8 @@ namespace Enrollment.Management.Courses.Domain.Mappings
     {
         public DomainToDtoMappingProfile()
         {
-            CreateMap<Cursos, CursosDto>().ForMember(x => x.ListDisciplinas, opt => opt.MapFrom(src => src.Disciplina.Split(';')));
-            CreateMap<CursosDto, Cursos>().ForMember(x => x.Disciplina, opt => opt.MapFrom(src => string.Join(";", src.ListDisciplinas))); 
+            CreateMap<Cursos, CursosDto>().ForMember(x => x.ListDisciplinas, opt => opt.MapFrom(mapExpression: src => src.Disciplina.Split(';', System.StringSplitOptions.None)));
+            CreateMap<CursosDto, Cursos>().ForMember(x => x.Disciplina, opt => opt.MapFrom(src => string.Join(";", src.ListDisciplinas)));
         }
     }
 }

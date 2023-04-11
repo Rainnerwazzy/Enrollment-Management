@@ -22,7 +22,7 @@ namespace JWTAuthorization.Api.Configuration
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("geek_universidade", "GeekShopping Server"),
+                new ApiScope("geek_universidade", "JWTAuthorization Api"),
                 new ApiScope(name: "read", "Read data."),
                 new ApiScope(name: "write", "Write data."),
                 new ApiScope(name: "delete", "Delete data."),
@@ -43,8 +43,8 @@ namespace JWTAuthorization.Api.Configuration
                     ClientId = "geek_universidade",
                     ClientSecrets = { new Secret("my_super_secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = {"http://localhost:5202/signin-oidc"},
-                    PostLogoutRedirectUris = {"http://localhost:5202/signout-callback-oidc"},
+                    RedirectUris = {"https://localhost:4430/swagger/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:4430/swagger/signout-callback-oidc"},
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

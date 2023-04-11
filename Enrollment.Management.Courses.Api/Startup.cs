@@ -105,6 +105,7 @@ namespace Enrollment.Management.Courses.Api
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

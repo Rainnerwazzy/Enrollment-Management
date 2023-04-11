@@ -1,25 +1,21 @@
+using Duende.IdentityServer.Services;
 using JWTAuthorization.Api.Configuration;
 using JWTAuthorization.Api.Data;
 using JWTAuthorization.Api.Initializer;
 using JWTAuthorization.Api.Models;
+using JWTAuthorization.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JWTAuthorization.Api
 {
     public class Startup
     {
-        private IDbInitializer initializer;
 
         public Startup(IConfiguration configuration)
         {
@@ -51,13 +47,12 @@ namespace JWTAuthorization.Api
                 .AddAspNetIdentity<ApplicationUser>();
 
             services.AddScoped<IDbInitializer, DbInitializer>();
-            // builder.Services.AddScoped<IProfileService, ProfileService>();
-            initializer = services.BuildServiceProvider().CreateScope().ServiceProvider.GetService<IDbInitializer>();
+            services.AddScoped<IProfileService, ProfileService>();
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -74,7 +69,7 @@ namespace JWTAuthorization.Api
             app.UseIdentityServer();
             app.UseAuthorization();
 
-            initializer.Initialize();
+            dbInitializer.Initialize();
 
             app.UseEndpoints(endpoints =>
             {

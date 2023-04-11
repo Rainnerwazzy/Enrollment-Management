@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using Ocelot.Provider.Eureka;
 using Ocelot.Provider.Polly;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
+using System;
 using System.IO;
 
 namespace Gateway.Enrollment.Management.WebAPI
@@ -50,10 +52,32 @@ namespace Gateway.Enrollment.Management.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot(Configuration).AddEureka().AddPolly();
-            services.AddSwaggerForOcelot(Configuration);          
+            services.AddSwaggerForOcelot(Configuration);
             services.AddServiceDiscovery(o => o.UseEureka());
             services.AddControllers();
             services.AddSwaggerGen();
+            var test = new Uri("https://localhost:5001");
+            services.AddHttpClient("", op => op.BaseAddress = test);
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+                .AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.Authority = "https://localhost:5001";
+                    options.GetClaimsFromUserInfoEndpoint = true;
+                    options.ClientId = "geek_universidade";
+                    options.ClientSecret = "my_super_secret";
+                    options.ResponseType = "code";
+                    options.ClaimActions.MapJsonKey("role", "role", "role");
+                    options.ClaimActions.MapJsonKey("sub", "sub", "sub");
+                    options.TokenValidationParameters.NameClaimType = "name";
+                    options.TokenValidationParameters.RoleClaimType = "role";
+                    options.Scope.Add("geek_universidade");
+                    options.SaveTokens = true;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -62,15 +86,15 @@ namespace Gateway.Enrollment.Management.WebAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-               // app.UseSwaggerUI();
+                // app.UseSwaggerUI();
             }
 
-           // app.UseOcelot();
+            // app.UseOcelot();
             app.UseHttpsRedirection();
 
-            //app.UseRouting();
-
-            //app.UseAuthorization();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseSwaggerForOcelotUI(options =>
             {

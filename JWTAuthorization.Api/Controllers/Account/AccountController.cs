@@ -2,34 +2,33 @@
 // See LICENSE in the project root for license information.
 
 
-using IdentityModel;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Duende.IdentityServer;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Stores;
-using Duende.IdentityServer.Test;
-using Microsoft.AspNetCore.Identity;
 using GeekShopping.IdentityServer.MainModule.Account;
-using System.Collections.Generic;
-using System.Security.Claims;
+using IdentityModel;
 using JWTAuthorization.Api.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace IdentityServerHost.Quickstart.UI
 {
-/// <summary>
-/// This sample controller implements a typical login/logout/provision workflow for local and external accounts.
-/// The login service encapsulates the interactions with the user data store. This data store is in-memory only and cannot be used for production!
-/// The interaction service provides a way for the UI to communicate with identityserver for validation and context retrieval
-/// </summary>
+    /// <summary>
+    /// This sample controller implements a typical login/logout/provision workflow for local and external accounts.
+    /// The login service encapsulates the interactions with the user data store. This data store is in-memory only and cannot be used for production!
+    /// The interaction service provides a way for the UI to communicate with identityserver for validation and context retrieval
+    /// </summary>
     [SecurityHeaders]
     [AllowAnonymous]
     public class AccountController : Controller
@@ -158,6 +157,7 @@ namespace IdentityServerHost.Quickstart.UI
 
                     await HttpContext.SignInAsync(isuser, props);
 
+                    
                     if (context != null)
                     {
                         if (context.IsNativeClient())
@@ -185,6 +185,8 @@ namespace IdentityServerHost.Quickstart.UI
                         // user might have clicked on a malicious link - should be logged
                         throw new Exception("invalid return URL");
                     }
+
+                    
                 }
 
                 await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId:context?.Client.ClientId));
@@ -196,13 +198,20 @@ namespace IdentityServerHost.Quickstart.UI
             return View(vm);
         }
 
-        
+        [HttpGet("token")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GetToken()
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+            return Ok(token);
+        }
         /// <summary>
         /// Show logout page
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
+            var token = await HttpContext.GetTokenAsync("access_token");
             // build a model so the logout page knows what to display
             var vm = await BuildLogoutViewModelAsync(logoutId);
 

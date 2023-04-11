@@ -70,7 +70,7 @@
         {
           "Name": "Courses.API",
           "Version": "1.0",
-          "Url": "http://gateway.enrollment.management.webapi:80/courses/swagger/v1/swagger.json"
+          "Url": "http://gateway.enrollment.management.webapi:80/api/v1/gateway"
         }
       ]
     },
