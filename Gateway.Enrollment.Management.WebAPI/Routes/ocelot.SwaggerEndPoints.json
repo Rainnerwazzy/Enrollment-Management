@@ -1,16 +1,27 @@
 {
   "SwaggerEndPoints": [
-    //{
-    //  "Key": "gatewayWebApi",
-    //  "TransformByOcelotConfig": false,
-    //  "Config": [
-    //    {
-    //      "Name": "Gateway.WebAPI",
-    //      "Version": "1.0",
-    //      "Url": "{Scheme}://localhost:{ServicePort}/swagger/v1/swagger.json"
-    //    }
-    //  ]
-    //},
+    {
+      "Key": "gettoken",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Courses.API",
+          "Version": "1.0",
+          "Url": "http://gateway.enrollment.management.webapi:80/gettoken/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "jwtauthentication",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Courses.API",
+          "Version": "1.0",
+          "Url": "http://gateway.enrollment.management.webapi:80/jwtauthentication/swagger/v1/swagger.json"
+        }
+      ]
+    },
     {
       "Key": "courses",
       "TransformByOcelotConfig": true,
