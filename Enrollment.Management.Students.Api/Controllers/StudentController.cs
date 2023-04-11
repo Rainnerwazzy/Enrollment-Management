@@ -1,5 +1,6 @@
 ﻿using Enrollment.Management.Students.Domain.Dtos;
 using Enrollment.Management.Students.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +13,7 @@ namespace Enrollment.Management.Students.Api.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
+    [Authorize]
     public class StudentController : Controller
     {
         private readonly IStudentsService _service;

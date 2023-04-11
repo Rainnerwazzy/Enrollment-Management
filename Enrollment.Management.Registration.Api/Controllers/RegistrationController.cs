@@ -1,5 +1,6 @@
 ﻿using Enrollment.Management.Registration.Domain.Dtos;
 using Enrollment.Management.Registration.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Enrollment.Management.Registration.Api.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
+    [Authorize]
     public class RegistrationController : Controller
     {
         private readonly IRegistrationService _service;

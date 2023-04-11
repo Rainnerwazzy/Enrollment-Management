@@ -1,20 +1,14 @@
 using Enrollment.Management.Courses.Api.Configurations;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
 using System.Collections.Generic;
-using System.Net;
 
 namespace Enrollment.Management.Courses.Api
 {
@@ -45,7 +39,7 @@ namespace Enrollment.Management.Courses.Api
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                     {
-                        options.Authority = "https://localhost:5001/";
+                        options.Authority = Configuration["Auth:Authority"];
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateAudience = false
@@ -96,7 +90,6 @@ namespace Enrollment.Management.Courses.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
